@@ -105,11 +105,13 @@ const Index = () => {
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
   const galleryImages = [
     { src: heroLiving, alt: "Living area" },
+    { src: livingImg, alt: "Living room" },
     { src: gardenImg, alt: "Private garden" },
     { src: bedroomImg, alt: "Bedroom" },
+    { src: bedroom2Img, alt: "Bedroom detail" },
+    { src: bedroom3Img, alt: "Bed headboard" },
     { src: kitchenImg, alt: "Kitchen" },
     { src: bathroomImg, alt: "Bathroom" },
-    { src: bedroom2Img, alt: "Bedroom detail" },
   ];
 
   return (
