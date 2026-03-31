@@ -113,6 +113,7 @@ const Index = () => {
     { src: bedroom3Img, alt: "Bed headboard" },
     { src: kitchenImg, alt: "Kitchen" },
     { src: bathroomImg, alt: "Bathroom" },
+    { src: hallwayImg, alt: "Hallway" },
   ];
 
   return (
