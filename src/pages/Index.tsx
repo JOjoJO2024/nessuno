@@ -307,7 +307,7 @@ const Index = () => {
             <div className="rounded-2xl overflow-hidden shadow-xl h-80 md:h-96">
               <iframe
                 title="Bellini Suite Garden Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.5!2d10.998!3d45.447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI2JzQ5LjIiTiAxMMKwNTknNTIuOCJF!5e0!3m2!1sen!2sit!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1398.5!2d11.0012!3d45.4485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f5f46a09a6b8d%3A0x2c3e4f5a6b7c8d9e!2sVia+Redentore+4%2C+37129+Verona+VR!5e0!3m2!1sit!2sit!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
