@@ -3,6 +3,7 @@ import heroLiving from "@/assets/hero-living.jpg";
 import gardenImg from "@/assets/garden.jpg";
 import bedroomImg from "@/assets/bedroom.jpg";
 import kitchenImg from "@/assets/kitchen.jpg";
+import bedroom2Img from "@/assets/bedroom2.jpg";
 import bathroomImg from "@/assets/bathroom.jpg";
 import { MapPin, Users, Maximize, Leaf, Star, Phone, MessageCircle, ChevronDown, Menu, X } from "lucide-react";
 
@@ -106,6 +107,7 @@ const Index = () => {
     { src: bedroomImg, alt: "Bedroom" },
     { src: kitchenImg, alt: "Kitchen" },
     { src: bathroomImg, alt: "Bathroom" },
+    { src: bedroom2Img, alt: "Bedroom detail" },
   ];
 
   return (
