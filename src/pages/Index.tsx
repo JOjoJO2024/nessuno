@@ -6,7 +6,7 @@ import kitchenImg from "@/assets/kitchen.jpg";
 import bathroomImg from "@/assets/bathroom.jpg";
 import { MapPin, Users, Maximize, Leaf, Star, Phone, MessageCircle, ChevronDown, Menu, X } from "lucide-react";
 
-const WHATSAPP_LINK = "https://wa.me/39XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
+const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
 
 const translations = {
   en: {
