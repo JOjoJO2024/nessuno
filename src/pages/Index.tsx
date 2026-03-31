@@ -7,6 +7,7 @@ import bedroom2Img from "@/assets/bedroom2.jpg";
 import bedroom3Img from "@/assets/bedroom3.jpg";
 import livingImg from "@/assets/living.jpg";
 import bathroomImg from "@/assets/bathroom.jpg";
+import hallwayImg from "@/assets/hallway.jpg";
 import { MapPin, Users, Maximize, Leaf, Star, Phone, MessageCircle, ChevronDown, Menu, X } from "lucide-react";
 
 const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
@@ -112,6 +113,7 @@ const Index = () => {
     { src: bedroom3Img, alt: "Bed headboard" },
     { src: kitchenImg, alt: "Kitchen" },
     { src: bathroomImg, alt: "Bathroom" },
+    { src: hallwayImg, alt: "Hallway" },
   ];
 
   return (
