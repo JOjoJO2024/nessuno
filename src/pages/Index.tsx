@@ -4,6 +4,8 @@ import gardenImg from "@/assets/garden.jpg";
 import bedroomImg from "@/assets/bedroom.jpg";
 import kitchenImg from "@/assets/kitchen.jpg";
 import bedroom2Img from "@/assets/bedroom2.jpg";
+import bedroom3Img from "@/assets/bedroom3.jpg";
+import livingImg from "@/assets/living.jpg";
 import bathroomImg from "@/assets/bathroom.jpg";
 import { MapPin, Users, Maximize, Leaf, Star, Phone, MessageCircle, ChevronDown, Menu, X } from "lucide-react";
 
