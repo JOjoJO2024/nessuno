@@ -181,11 +181,11 @@ const Index = () => {
             {t.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">
               <MessageCircle size={18} />
               {t.heroCta}
             </a>
-            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 border border-primary-foreground/50 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
+            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 bg-primary-foreground/20 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-full text-sm font-bold hover:bg-primary-foreground/30 transition-all">
               {t.heroCtaSecondary}
             </button>
           </div>
@@ -351,21 +351,12 @@ const Index = () => {
             <a href="tel:+393318066110" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <Phone className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">{t.contactPhone}</p>
+              <p className="text-xs text-muted-foreground mt-1">{lang === "it" ? "Tocca per chiamare" : "Tap to call"}</p>
             </a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <MessageCircle className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">WhatsApp</p>
-            </a>
-          </div>
-          {/* Phone & WhatsApp buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <a href="tel:+393318066110" className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity">
-              <Phone size={18} />
-              {lang === "it" ? "Chiama Ora" : "Call Now"} — +39 331 806 6110
-            </a>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[hsl(142,70%,40%)] text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity">
-              <MessageCircle size={18} />
-              WhatsApp — +39 331 806 6110
+              <p className="text-xs text-muted-foreground mt-1">{lang === "it" ? "Scrivici su WhatsApp" : "Message us on WhatsApp"}</p>
             </a>
           </div>
         </div>
