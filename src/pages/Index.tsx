@@ -104,6 +104,7 @@ const Index = () => {
   const [lang, setLang] = useState<Lang>("en");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [availabilityOpen, setAvailabilityOpen] = useState(false);
   const t = translations[lang];
 
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
