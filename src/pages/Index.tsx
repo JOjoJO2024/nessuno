@@ -11,6 +11,7 @@ import hallwayImg from "@/assets/hallway.jpg";
 import teaCornerImg from "@/assets/tea-corner.jpg";
 import amenitiesImg from "@/assets/amenities.jpg";
 import { MapPin, Users, Maximize, Leaf, Star, Phone, MessageCircle, ChevronDown, Menu, X } from "lucide-react";
+import AvailabilityModal from "@/components/AvailabilityModal";
 
 const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
 
@@ -51,7 +52,7 @@ const translations = {
     ctaButton2: "Check Availability",
     contactTitle: "Get in Touch",
     contactAddress: "Via Redentore 4, Verona, Italy",
-    contactPhone: "+39 XXX XXX XXXX",
+    contactPhone: "+39 331 806 6110",
     contactEmail: "info@bellinisuitegarden.com",
     footer: "© 2026 Bellini Suite Garden. All rights reserved.",
   },
@@ -91,7 +92,7 @@ const translations = {
     ctaButton2: "Verifica Disponibilità",
     contactTitle: "Contattaci",
     contactAddress: "Via Redentore 4, Verona, Italia",
-    contactPhone: "+39 XXX XXX XXXX",
+    contactPhone: "+39 331 806 6110",
     contactEmail: "info@bellinisuitegarden.com",
     footer: "© 2026 Bellini Suite Garden. Tutti i diritti riservati.",
   },
@@ -103,6 +104,7 @@ const Index = () => {
   const [lang, setLang] = useState<Lang>("en");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [availabilityOpen, setAvailabilityOpen] = useState(false);
   const t = translations[lang];
 
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
@@ -183,9 +185,9 @@ const Index = () => {
               <MessageCircle size={18} />
               {t.heroCta}
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 border border-primary-foreground/50 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
+            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 border border-primary-foreground/50 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
               {t.heroCtaSecondary}
-            </a>
+            </button>
           </div>
         </div>
         <a href="#values" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/70 animate-bounce">
@@ -330,9 +332,9 @@ const Index = () => {
               <MessageCircle size={18} />
               {t.ctaButton}
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 border border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
+            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 border border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
               {t.ctaButton2}
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -346,16 +348,25 @@ const Index = () => {
               <MapPin className="mx-auto mb-4 text-primary" size={24} />
               <p className="text-sm text-muted-foreground">{t.contactAddress}</p>
             </div>
-            <div className="p-6">
-              <Phone className="mx-auto mb-4 text-primary" size={24} />
-              <p className="text-sm text-muted-foreground">{t.contactPhone}</p>
-            </div>
-            <div className="p-6">
-              <MessageCircle className="mx-auto mb-4 text-primary" size={24} />
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-                WhatsApp
-              </a>
-            </div>
+            <a href="tel:+393318066110" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
+              <Phone className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
+              <p className="text-sm text-primary font-medium">{t.contactPhone}</p>
+            </a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
+              <MessageCircle className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
+              <p className="text-sm text-primary font-medium">WhatsApp</p>
+            </a>
+          </div>
+          {/* Phone & WhatsApp buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+            <a href="tel:+393318066110" className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity">
+              <Phone size={18} />
+              {lang === "it" ? "Chiama Ora" : "Call Now"} — +39 331 806 6110
+            </a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[hsl(142,70%,40%)] text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity">
+              <MessageCircle size={18} />
+              WhatsApp — +39 331 806 6110
+            </a>
           </div>
         </div>
       </section>
@@ -366,6 +377,9 @@ const Index = () => {
           <p className="text-sm text-muted-foreground">{t.footer}</p>
         </div>
       </footer>
+
+      {/* Availability Modal */}
+      <AvailabilityModal open={availabilityOpen} onOpenChange={setAvailabilityOpen} lang={lang} />
 
       {/* Floating WhatsApp */}
       <a
