@@ -323,16 +323,18 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
+      <section className="relative py-20 md:py-28 text-primary-foreground overflow-hidden">
+        <img src={gardenImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-foreground/60" />
+        <div className="relative z-10 container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h2 className="font-heading text-3xl md:text-5xl font-light mb-6">{t.ctaTitle}</h2>
           <p className="text-primary-foreground/80 mb-10 text-lg">{t.ctaDesc}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-full text-sm font-bold hover:opacity-90 transition-opacity">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] text-primary-foreground px-8 py-4 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">
               <MessageCircle size={18} />
               {t.ctaButton}
             </a>
-            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 border border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
+            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 bg-primary-foreground/20 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-full text-sm font-bold hover:bg-primary-foreground/30 transition-all">
               {t.ctaButton2}
             </button>
           </div>
