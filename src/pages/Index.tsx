@@ -11,6 +11,7 @@ import hallwayImg from "@/assets/hallway.jpg";
 import teaCornerImg from "@/assets/tea-corner.jpg";
 import amenitiesImg from "@/assets/amenities.jpg";
 import { MapPin, Users, Maximize, Leaf, Star, Phone, MessageCircle, ChevronDown, Menu, X } from "lucide-react";
+import AvailabilityModal from "@/components/AvailabilityModal";
 
 const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
 
