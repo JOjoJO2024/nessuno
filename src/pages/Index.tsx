@@ -52,7 +52,7 @@ const translations = {
     ctaButton2: "Check Availability",
     contactTitle: "Get in Touch",
     contactAddress: "Via Redentore 4, Verona, Italy",
-    contactPhone: "+39 XXX XXX XXXX",
+    contactPhone: "+39 331 806 6110",
     contactEmail: "info@bellinisuitegarden.com",
     footer: "© 2026 Bellini Suite Garden. All rights reserved.",
   },
