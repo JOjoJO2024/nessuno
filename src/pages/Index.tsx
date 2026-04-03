@@ -180,11 +180,11 @@ const Index = () => {
           <p className="text-primary-foreground/90 text-lg md:text-xl font-light mb-10 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             {t.heroSubtitle}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] text-primary-foreground px-8 py-4 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-              <MessageCircle size={18} />
-              {t.heroCta}
+          <div className="flex flex-col items-center gap-5 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-primary-foreground w-20 h-20 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+              <MessageCircle size={38} />
             </a>
+            <span className="text-primary-foreground text-sm font-semibold tracking-wide">{t.heroCta}</span>
             <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 bg-primary-foreground/20 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-full text-sm font-bold hover:bg-primary-foreground/30 transition-all">
               {t.heroCtaSecondary}
             </button>
