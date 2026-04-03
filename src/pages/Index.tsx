@@ -374,16 +374,6 @@ const Index = () => {
       {/* Availability Modal */}
       <AvailabilityModal open={availabilityOpen} onOpenChange={setAvailabilityOpen} lang={lang} />
 
-      {/* Floating WhatsApp */}
-      <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
-        aria-label="WhatsApp"
-      >
-        <MessageCircle size={26} />
-      </a>
     </div>
   );
 };
