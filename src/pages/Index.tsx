@@ -185,9 +185,9 @@ const Index = () => {
               <MessageCircle size={18} />
               {t.heroCta}
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 border border-primary-foreground/50 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
+            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 border border-primary-foreground/50 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
               {t.heroCtaSecondary}
-            </a>
+            </button>
           </div>
         </div>
         <a href="#values" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/70 animate-bounce">
