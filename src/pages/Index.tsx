@@ -332,9 +332,9 @@ const Index = () => {
               <MessageCircle size={18} />
               {t.ctaButton}
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 border border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
+            <button onClick={() => setAvailabilityOpen(true)} className="inline-flex items-center gap-2 border border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold hover:bg-primary-foreground/10 transition-colors">
               {t.ctaButton2}
-            </a>
+            </button>
           </div>
         </div>
       </section>
