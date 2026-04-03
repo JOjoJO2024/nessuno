@@ -378,6 +378,9 @@ const Index = () => {
         </div>
       </footer>
 
+      {/* Availability Modal */}
+      <AvailabilityModal open={availabilityOpen} onOpenChange={setAvailabilityOpen} lang={lang} />
+
       {/* Floating WhatsApp */}
       <a
         href={WHATSAPP_LINK}
