@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroLiving from "@/assets/hero-living.jpg";
 import gardenImg from "@/assets/garden.jpg";
 import bedroomImg from "@/assets/bedroom.jpg";
@@ -102,19 +102,26 @@ type Lang = "en" | "it";
 
 const Index = () => {
   const [lang, setLang] = useState<Lang>(() => {
-    const saved = localStorage.getItem("bellini-lang");
+    if (typeof window === "undefined") return "it";
+    const saved = window.localStorage.getItem("bellini-lang");
     if (saved === "en" || saved === "it") return saved;
-    return navigator.language.startsWith("it") ? "it" : "en";
+    return window.navigator.language.toLowerCase().startsWith("it") ? "it" : "en";
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [availabilityOpen, setAvailabilityOpen] = useState(false);
   const t = translations[lang];
+  const nextLang: Lang = lang === "en" ? "it" : "en";
+
+  useEffect(() => {
+    window.localStorage.setItem("bellini-lang", lang);
+    document.documentElement.lang = lang;
+    document.documentElement.setAttribute("translate", "no");
+    document.documentElement.classList.add("notranslate");
+  }, [lang]);
 
   const toggleLang = () => {
-    const newLang = lang === "en" ? "it" : "en";
-    setLang(newLang);
-    localStorage.setItem("bellini-lang", newLang);
+    setLang(nextLang);
   };
 
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
@@ -147,18 +154,24 @@ const Index = () => {
               </a>
             ))}
             <button
+              type="button"
               onClick={toggleLang}
-              className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+              translate="no"
+              aria-label={lang === "it" ? "Passa alla lingua inglese" : "Switch to Italian language"}
+              className="notranslate text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
             >
-              {lang === "en" ? "IT" : "EN"}
+              <span translate="no">{nextLang.toUpperCase()}</span>
             </button>
           </div>
           <div className="flex md:hidden items-center gap-3">
             <button
+              type="button"
               onClick={toggleLang}
-              className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
+              translate="no"
+              aria-label={lang === "it" ? "Passa alla lingua inglese" : "Switch to Italian language"}
+              className="notranslate text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
             >
-              {lang === "en" ? "IT" : "EN"}
+              <span translate="no">{nextLang.toUpperCase()}</span>
             </button>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-foreground">
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
