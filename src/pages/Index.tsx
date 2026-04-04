@@ -101,7 +101,11 @@ const translations = {
 type Lang = "en" | "it";
 
 const Index = () => {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem("bellini-lang");
+    if (saved === "en" || saved === "it") return saved;
+    return navigator.language.startsWith("it") ? "it" : "en";
+  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [availabilityOpen, setAvailabilityOpen] = useState(false);
