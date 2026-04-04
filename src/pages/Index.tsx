@@ -147,7 +147,7 @@ const Index = () => {
               </a>
             ))}
             <button
-              onClick={() => setLang(lang === "en" ? "it" : "en")}
+              onClick={toggleLang}
               className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               {lang === "en" ? "IT" : "EN"}
@@ -155,7 +155,7 @@ const Index = () => {
           </div>
           <div className="flex md:hidden items-center gap-3">
             <button
-              onClick={() => setLang(lang === "en" ? "it" : "en")}
+              onClick={toggleLang}
               className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
             >
               {lang === "en" ? "IT" : "EN"}
