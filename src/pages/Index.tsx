@@ -101,11 +101,21 @@ const translations = {
 type Lang = "en" | "it";
 
 const Index = () => {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem("bellini-lang");
+    if (saved === "en" || saved === "it") return saved;
+    return navigator.language.startsWith("it") ? "it" : "en";
+  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [availabilityOpen, setAvailabilityOpen] = useState(false);
   const t = translations[lang];
+
+  const toggleLang = () => {
+    const newLang = lang === "en" ? "it" : "en";
+    setLang(newLang);
+    localStorage.setItem("bellini-lang", newLang);
+  };
 
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
   const galleryImages = [
@@ -137,7 +147,7 @@ const Index = () => {
               </a>
             ))}
             <button
-              onClick={() => setLang(lang === "en" ? "it" : "en")}
+              onClick={toggleLang}
               className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               {lang === "en" ? "IT" : "EN"}
@@ -145,7 +155,7 @@ const Index = () => {
           </div>
           <div className="flex md:hidden items-center gap-3">
             <button
-              onClick={() => setLang(lang === "en" ? "it" : "en")}
+              onClick={toggleLang}
               className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
             >
               {lang === "en" ? "IT" : "EN"}
