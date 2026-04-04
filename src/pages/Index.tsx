@@ -154,18 +154,24 @@ const Index = () => {
               </a>
             ))}
             <button
+              type="button"
               onClick={toggleLang}
-              className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+              translate="no"
+              aria-label={lang === "it" ? "Passa alla lingua inglese" : "Switch to Italian language"}
+              className="notranslate text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
             >
-              {lang === "en" ? "IT" : "EN"}
+              <span translate="no">{nextLang.toUpperCase()}</span>
             </button>
           </div>
           <div className="flex md:hidden items-center gap-3">
             <button
+              type="button"
               onClick={toggleLang}
-              className="text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
+              translate="no"
+              aria-label={lang === "it" ? "Passa alla lingua inglese" : "Switch to Italian language"}
+              className="notranslate text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
             >
-              {lang === "en" ? "IT" : "EN"}
+              <span translate="no">{nextLang.toUpperCase()}</span>
             </button>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-foreground">
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
