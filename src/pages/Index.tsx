@@ -111,6 +111,12 @@ const Index = () => {
   const [availabilityOpen, setAvailabilityOpen] = useState(false);
   const t = translations[lang];
 
+  const toggleLang = () => {
+    const newLang = lang === "en" ? "it" : "en";
+    setLang(newLang);
+    localStorage.setItem("bellini-lang", newLang);
+  };
+
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
   const galleryImages = [
     { src: heroLiving, alt: "Living area" },
