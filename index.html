@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Security-Policy"
@@ -7,31 +7,25 @@
     default-src 'self';
     script-src  'self';
     style-src   'self' 'unsafe-inline';
-    img-src     'self' data:;
+    img-src     'self' data: https:;
     font-src    'self';
     connect-src 'self';
+    frame-src   https://www.google.com;
   ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project">
-    <meta name="author" content="Lovable" />
+    <title>Bellini Suite Garden | Suite con Giardino Privato a Verona</title>
+    <meta name="description" content="Appartamento open space di 80 mq nel cuore di Verona, a pochi passi dal Teatro Romano. Giardino privato, fino a 4 ospiti. Prenota direttamente.">
+    <meta name="author" content="Bellini Suite Garden" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    
-    
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/99bf7041-2508-4458-8637-e2aa1a702d8a/id-preview-7fe3de0b--3886b681-5f72-47de-a6eb-3788e98ee891.lovable.app-1774964270415.png">
+    <meta property="og:url" content="https://bellinisuitegarden.com" />
+    <meta property="og:title" content="Bellini Suite Garden | Verona" />
+    <meta property="og:description" content="Suite con giardino privato nel centro storico di Verona. 80 mq, fino a 4 ospiti, a pochi passi dal Teatro Romano." />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/99bf7041-2508-4458-8637-e2aa1a702d8a/id-preview-7fe3de0b--3886b681-5f72-47de-a6eb-3788e98ee891.lovable.app-1774964270415.png">
-    <meta property="og:title" content="Lovable App">
-  <meta name="twitter:title" content="Lovable App">
-  <meta property="og:description" content="Lovable Generated Project">
-  <meta name="twitter:description" content="Lovable Generated Project">
-</head>
-
+    <meta name="twitter:title" content="Bellini Suite Garden | Verona" />
+    <meta name="twitter:description" content="Suite con giardino privato nel centro storico di Verona. 80 mq, fino a 4 ospiti." />
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
