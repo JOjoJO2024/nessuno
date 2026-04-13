@@ -8,7 +8,7 @@ import { it, enUS } from "date-fns/locale";
 interface AvailabilityModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  lang: "en" | "it";
+  lang: string;
 }
 
 const AvailabilityModal = ({ open, onOpenChange, lang }: AvailabilityModalProps) => {
