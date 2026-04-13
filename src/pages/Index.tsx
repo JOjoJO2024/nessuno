@@ -324,26 +324,57 @@ const Index = () => {
                 {label}
               </a>
             ))}
-            <button
-              type="button"
-              onClick={toggleLang}
-              translate="no"
-              aria-label={lang === "it" ? "Passa alla lingua inglese" : "Switch to Italian language"}
-              className="notranslate text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              <span translate="no">{nextLang.toUpperCase()}</span>
-            </button>
+            <div className="relative" ref={langDropdownRef} translate="no">
+              <button
+                type="button"
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className="notranslate flex items-center gap-1.5 text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <span className="text-base leading-none">{currentLangOption.flag}</span>
+                <span>{currentLangOption.code.toUpperCase()}</span>
+                <ChevronDown size={14} className={`transition-transform ${langDropdownOpen ? "rotate-180" : ""}`} />
+              </button>
+              {langDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-44 bg-popover border border-border rounded-xl shadow-lg py-1 z-50">
+                  {LANG_OPTIONS.map((opt) => (
+                    <button
+                      key={opt.code}
+                      onClick={() => selectLang(opt.code)}
+                      className={`notranslate w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-accent transition-colors ${lang === opt.code ? "font-bold text-primary" : "text-foreground"}`}
+                    >
+                      <span className="text-lg">{opt.flag}</span>
+                      <span>{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
           <div className="flex md:hidden items-center gap-3">
-            <button
-              type="button"
-              onClick={toggleLang}
-              translate="no"
-              aria-label={lang === "it" ? "Passa alla lingua inglese" : "Switch to Italian language"}
-              className="notranslate text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
-            >
-              <span translate="no">{nextLang.toUpperCase()}</span>
-            </button>
+            <div className="relative" ref={langDropdownRef} translate="no">
+              <button
+                type="button"
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className="notranslate flex items-center gap-1.5 text-sm font-semibold text-primary border border-primary rounded-full px-3 py-1"
+              >
+                <span className="text-base leading-none">{currentLangOption.flag}</span>
+                <span>{currentLangOption.code.toUpperCase()}</span>
+              </button>
+              {langDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-44 bg-popover border border-border rounded-xl shadow-lg py-1 z-50">
+                  {LANG_OPTIONS.map((opt) => (
+                    <button
+                      key={opt.code}
+                      onClick={() => selectLang(opt.code)}
+                      className={`notranslate w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-accent transition-colors ${lang === opt.code ? "font-bold text-primary" : "text-foreground"}`}
+                    >
+                      <span className="text-lg">{opt.flag}</span>
+                      <span>{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-foreground">
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
