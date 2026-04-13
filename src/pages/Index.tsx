@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import heroLiving from "@/assets/hero-living.jpg";
 import gardenImg from "@/assets/garden.jpg";
 import bedroomImg from "@/assets/bedroom.jpg";
@@ -15,7 +15,42 @@ import AvailabilityModal from "@/components/AvailabilityModal";
 
 const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
 
-const translations = {
+type Lang = "it" | "en" | "ru" | "es" | "de";
+
+const LANG_OPTIONS: { code: Lang; flag: string; label: string }[] = [
+  { code: "it", flag: "🇮🇹", label: "Italiano" },
+  { code: "en", flag: "🇬🇧", label: "English" },
+  { code: "ru", flag: "🇷🇺", label: "Русский" },
+  { code: "es", flag: "🇪🇸", label: "Español" },
+  { code: "de", flag: "🇩🇪", label: "Deutsch" },
+];
+
+const translations: Record<Lang, {
+  nav: string[];
+  heroTitle: string;
+  heroSubtitle: string;
+  heroCta: string;
+  heroCtaSecondary: string;
+  valueTitle: string;
+  values: { title: string; desc: string }[];
+  propertyTitle: string;
+  propertyDesc: string;
+  propertyDesc2: string;
+  highlightsTitle: string;
+  highlights: string[];
+  galleryTitle: string;
+  locationTitle: string;
+  locationDesc: string;
+  ctaTitle: string;
+  ctaDesc: string;
+  ctaButton: string;
+  ctaButton2: string;
+  contactTitle: string;
+  contactAddress: string;
+  contactPhone: string;
+  contactEmail: string;
+  footer: string;
+}> = {
   en: {
     nav: ["The Suite", "Features", "Gallery", "Location", "Contact"],
     heroTitle: "Bellini Suite Garden",
@@ -96,22 +131,147 @@ const translations = {
     contactEmail: "info@bellinisuitegarden.com",
     footer: "© 2026 Bellini Suite Garden. Tutti i diritti riservati.",
   },
+  ru: {
+    nav: ["Люкс", "Особенности", "Галерея", "Расположение", "Контакты"],
+    heroTitle: "Bellini Suite Garden",
+    heroSubtitle: "Эксклюзивное убежище в самом сердце Вероны",
+    heroCta: "Забронировать в WhatsApp",
+    heroCtaSecondary: "Проверить наличие",
+    valueTitle: "Почему Bellini Suite Garden",
+    values: [
+      { title: "Частный сад", desc: "Редкий оазис в историческом центре Вероны — ваше личное убежище в шаге от Театра Романо." },
+      { title: "Центр и тишина", desc: "Идеальный баланс: всё в шаговой доступности, но абсолютное спокойствие." },
+      { title: "Изысканный дизайн", desc: "80 кв.м колониальной элегантности с природными акцентами — каждая деталь продумана для комфорта." },
+      { title: "До 4 гостей", desc: "Идеально для пар или семей: двуспальная кровать и раскладной диван в просторном open space." },
+    ],
+    propertyTitle: "Люкс",
+    propertyDesc: "Bellini Suite Garden — апартаменты open space площадью 80 кв.м в историческом центре Вероны, в нескольких шагах от Театра Романо. Изысканный натуралистический дизайн сочетает колониальные детали с современным комфортом.",
+    propertyDesc2: "В люксе есть просторная гостиная, полностью оборудованная кухня, уютная спальная зона с двуспальной кроватью и раскладным диваном, отдельная ванная комната и ухоженный частный сад — настоящая редкость в центре Вероны.",
+    highlightsTitle: "Ваше пребывание включает",
+    highlights: [
+      "Частный сад в историческом центре",
+      "80 кв.м open space",
+      "Двуспальная кровать + диван-кровать (до 4 гостей)",
+      "Полностью оборудованная кухня",
+      "Отдельная ванная с премиум-отделкой",
+      "В нескольких шагах от Театра Романо",
+      "Кондиционер и быстрый Wi-Fi",
+      "Самостоятельная регистрация",
+    ],
+    galleryTitle: "Загляните внутрь",
+    locationTitle: "Премиальное расположение",
+    locationDesc: "Via Redentore 4, Верона — в самом сердце исторического центра, в нескольких шагах от знаменитого Театра Романо. Понте Пьетра, Пьяцца делле Эрбе и набережная Адидже — в нескольких минутах ходьбы.",
+    ctaTitle: "Готовы к незабываемому отдыху в Вероне?",
+    ctaDesc: "Бронируйте напрямую у нас по лучшим ценам. Без посредников, без скрытых комиссий.",
+    ctaButton: "Забронировать в WhatsApp",
+    ctaButton2: "Проверить наличие",
+    contactTitle: "Свяжитесь с нами",
+    contactAddress: "Via Redentore 4, Верона, Италия",
+    contactPhone: "+39 331 806 6110",
+    contactEmail: "info@bellinisuitegarden.com",
+    footer: "© 2026 Bellini Suite Garden. Все права защищены.",
+  },
+  es: {
+    nav: ["La Suite", "Características", "Galería", "Ubicación", "Contacto"],
+    heroTitle: "Bellini Suite Garden",
+    heroSubtitle: "Un refugio exclusivo en el corazón de Verona",
+    heroCta: "Reservar en WhatsApp",
+    heroCtaSecondary: "Verificar disponibilidad",
+    valueTitle: "Por qué Bellini Suite Garden",
+    values: [
+      { title: "Jardín privado", desc: "Un oasis único en el centro histórico de Verona — tu refugio personal a pocos pasos del Teatro Romano." },
+      { title: "Céntrico y tranquilo", desc: "El equilibrio perfecto: todo a pie, pero con la paz de un rincón reservado." },
+      { title: "Diseño refinado", desc: "80 m² de elegancia colonial con toques naturalistas — cada detalle pensado para el confort." },
+      { title: "Hasta 4 huéspedes", desc: "Ideal para parejas o familias con cama doble y sofá cama en un amplio espacio abierto." },
+    ],
+    propertyTitle: "La Suite",
+    propertyDesc: "Bellini Suite Garden es un apartamento open space de 80 m² ubicado en el corazón histórico de Verona, a pocos pasos del Teatro Romano. El refinado diseño naturalista combina detalles coloniales con comodidad moderna.",
+    propertyDesc2: "La suite cuenta con un amplio salón, cocina totalmente equipada, zona de descanso con cama doble y sofá cama, baño separado y un hermoso jardín privado — una verdadera rareza en el centro de Verona.",
+    highlightsTitle: "Tu estancia incluye",
+    highlights: [
+      "Jardín privado en el centro histórico",
+      "80 m² open space",
+      "Cama doble + sofá cama (hasta 4 huéspedes)",
+      "Cocina moderna totalmente equipada",
+      "Baño separado con acabados premium",
+      "A pocos pasos del Teatro Romano",
+      "Aire acondicionado y Wi-Fi rápido",
+      "Auto check-in disponible",
+    ],
+    galleryTitle: "Un vistazo al interior",
+    locationTitle: "Ubicación privilegiada",
+    locationDesc: "Via Redentore 4, Verona — en el corazón del centro histórico, a pocos pasos del icónico Teatro Romano. Ponte Pietra, Piazza delle Erbe y la ribera del Adigio están a minutos a pie.",
+    ctaTitle: "¿Listos para su experiencia en Verona?",
+    ctaDesc: "Reserve directamente con nosotros para las mejores tarifas y un toque personal. Sin intermediarios, sin costes ocultos.",
+    ctaButton: "Reservar en WhatsApp",
+    ctaButton2: "Verificar disponibilidad",
+    contactTitle: "Contáctenos",
+    contactAddress: "Via Redentore 4, Verona, Italia",
+    contactPhone: "+39 331 806 6110",
+    contactEmail: "info@bellinisuitegarden.com",
+    footer: "© 2026 Bellini Suite Garden. Todos los derechos reservados.",
+  },
+  de: {
+    nav: ["Die Suite", "Ausstattung", "Galerie", "Lage", "Kontakt"],
+    heroTitle: "Bellini Suite Garden",
+    heroSubtitle: "Ein exklusives Refugium im Herzen von Verona",
+    heroCta: "Jetzt auf WhatsApp buchen",
+    heroCtaSecondary: "Verfügbarkeit prüfen",
+    valueTitle: "Warum Bellini Suite Garden",
+    values: [
+      { title: "Privater Garten", desc: "Eine seltene Oase im historischen Zentrum Veronas — Ihr persönlicher Rückzugsort nahe dem Teatro Romano." },
+      { title: "Zentral & Ruhig", desc: "Die perfekte Balance: alles zu Fuß erreichbar, aber in absoluter Ruhe." },
+      { title: "Edles Design", desc: "80 m² koloniale Eleganz mit naturalistischen Akzenten — jedes Detail für Ihren Komfort gestaltet." },
+      { title: "Bis zu 4 Gäste", desc: "Ideal für Paare oder Familien mit Doppelbett und Schlafsofa in einem großzügigen Open Space." },
+    ],
+    propertyTitle: "Die Suite",
+    propertyDesc: "Bellini Suite Garden ist ein 80 m² großes Open-Space-Apartment im historischen Herzen Veronas, nur wenige Schritte vom Teatro Romano entfernt. Das raffinierte naturalistische Design verbindet koloniale Details mit modernem Komfort.",
+    propertyDesc2: "Die Suite bietet einen großzügigen Wohnbereich, eine voll ausgestattete Küche, einen komfortablen Schlafbereich mit Doppelbett und Schlafsofa, ein separates Badezimmer und einen wunderschön gepflegten privaten Garten — eine echte Seltenheit im Zentrum Veronas.",
+    highlightsTitle: "Ihr Aufenthalt beinhaltet",
+    highlights: [
+      "Privater Garten im historischen Zentrum",
+      "80 m² Open Space",
+      "Doppelbett + Schlafsofa (bis zu 4 Gäste)",
+      "Voll ausgestattete moderne Küche",
+      "Separates Bad mit Premium-Ausstattung",
+      "Wenige Schritte vom Teatro Romano",
+      "Klimaanlage & schnelles WLAN",
+      "Self Check-in verfügbar",
+    ],
+    galleryTitle: "Ein Blick hinein",
+    locationTitle: "Erstklassige Lage",
+    locationDesc: "Via Redentore 4, Verona — im Herzen der Altstadt, nur wenige Schritte vom ikonischen Teatro Romano. Ponte Pietra, Piazza delle Erbe und die Etsch-Promenade sind in wenigen Minuten zu Fuß erreichbar.",
+    ctaTitle: "Bereit für Ihr Verona-Erlebnis?",
+    ctaDesc: "Buchen Sie direkt bei uns für die besten Preise und persönlichen Service. Keine Vermittler, keine versteckten Gebühren.",
+    ctaButton: "Jetzt auf WhatsApp buchen",
+    ctaButton2: "Verfügbarkeit prüfen",
+    contactTitle: "Kontakt",
+    contactAddress: "Via Redentore 4, Verona, Italien",
+    contactPhone: "+39 331 806 6110",
+    contactEmail: "info@bellinisuitegarden.com",
+    footer: "© 2026 Bellini Suite Garden. Alle Rechte vorbehalten.",
+  },
 };
-
-type Lang = "en" | "it";
 
 const Index = () => {
   const [lang, setLang] = useState<Lang>(() => {
     if (typeof window === "undefined") return "it";
     const saved = window.localStorage.getItem("bellini-lang");
-    if (saved === "en" || saved === "it") return saved;
-    return window.navigator.language.toLowerCase().startsWith("it") ? "it" : "en";
+    if (saved && ["it", "en", "ru", "es", "de"].includes(saved)) return saved as Lang;
+    const browserLang = window.navigator.language.toLowerCase();
+    if (browserLang.startsWith("it")) return "it";
+    if (browserLang.startsWith("ru")) return "ru";
+    if (browserLang.startsWith("es")) return "es";
+    if (browserLang.startsWith("de")) return "de";
+    return "en";
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [availabilityOpen, setAvailabilityOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const langDropdownRef = useRef<HTMLDivElement>(null);
   const t = translations[lang];
-  const nextLang: Lang = lang === "en" ? "it" : "en";
+  const currentLangOption = LANG_OPTIONS.find((l) => l.code === lang)!;
 
   useEffect(() => {
     window.localStorage.setItem("bellini-lang", lang);
@@ -120,8 +280,19 @@ const Index = () => {
     document.documentElement.classList.add("notranslate");
   }, [lang]);
 
-  const toggleLang = () => {
-    setLang(nextLang);
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(e.target as Node)) {
+        setLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectLang = (code: Lang) => {
+    setLang(code);
+    setLangDropdownOpen(false);
   };
 
   const sectionIds = ["property", "highlights", "gallery", "location", "contact"];
