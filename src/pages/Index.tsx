@@ -451,13 +451,13 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed mb-8">{t.propertyDesc2}</p>
               <div className="flex flex-wrap gap-4">
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Maximize size={16} /> 80 sqm
+                  <Maximize size={16} /> {{ it: "80 mq", en: "80 sqm", ru: "80 кв.м", es: "80 m²", de: "80 m²" }[lang]}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Users size={16} /> Max 4
+                  <Users size={16} /> {{ it: "Max 4", en: "Max 4", ru: "До 4", es: "Máx 4", de: "Max 4" }[lang]}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Leaf size={16} /> Private Garden
+                  <Leaf size={16} /> {{ it: "Giardino Privato", en: "Private Garden", ru: "Частный сад", es: "Jardín Privado", de: "Privater Garten" }[lang]}
                 </span>
               </div>
             </div>
