@@ -355,7 +355,7 @@ const Index = () => {
             </div>
           </div>
           <div className="flex md:hidden items-center gap-3">
-            <div className="relative" ref={langDropdownRef} translate="no">
+            <div className="relative" ref={langDropdownMobileRef} translate="no">
               <button
                 type="button"
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
