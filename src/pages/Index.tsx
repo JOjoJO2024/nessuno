@@ -328,7 +328,7 @@ const Index = () => {
                 {label}
               </a>
             ))}
-            <div className="relative" ref={langDropdownRef} translate="no">
+            <div className="relative" ref={langDropdownDesktopRef} translate="no">
               <button
                 type="button"
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
