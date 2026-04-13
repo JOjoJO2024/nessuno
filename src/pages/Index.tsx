@@ -578,12 +578,12 @@ const Index = () => {
             <a href="tel:+393318066110" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <Phone className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">{t.contactPhone}</p>
-              <p className="text-xs text-muted-foreground mt-1">{lang === "it" ? "Tocca per chiamare" : "Tap to call"}</p>
+              <p className="text-xs text-muted-foreground mt-1">{{ it: "Tocca per chiamare", en: "Tap to call", ru: "Нажмите для звонка", es: "Toca para llamar", de: "Zum Anrufen tippen" }[lang]}</p>
             </a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <MessageCircle className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">WhatsApp</p>
-              <p className="text-xs text-muted-foreground mt-1">{lang === "it" ? "Scrivici su WhatsApp" : "Message us on WhatsApp"}</p>
+              <p className="text-xs text-muted-foreground mt-1">{{ it: "Scrivici su WhatsApp", en: "Message us on WhatsApp", ru: "Напишите нам в WhatsApp", es: "Escríbenos en WhatsApp", de: "Schreiben Sie uns auf WhatsApp" }[lang]}</p>
             </a>
           </div>
         </div>
