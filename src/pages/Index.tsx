@@ -269,7 +269,8 @@ const Index = () => {
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [availabilityOpen, setAvailabilityOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const langDropdownRef = useRef<HTMLDivElement>(null);
+  const langDropdownDesktopRef = useRef<HTMLDivElement>(null);
+  const langDropdownMobileRef = useRef<HTMLDivElement>(null);
   const t = translations[lang];
   const currentLangOption = LANG_OPTIONS.find((l) => l.code === lang)!;
 
@@ -282,7 +283,10 @@ const Index = () => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (langDropdownRef.current && !langDropdownRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      const isInsideDesktop = langDropdownDesktopRef.current?.contains(target);
+      const isInsideMobile = langDropdownMobileRef.current?.contains(target);
+      if (!isInsideDesktop && !isInsideMobile) {
         setLangDropdownOpen(false);
       }
     };
