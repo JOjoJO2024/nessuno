@@ -44,6 +44,20 @@ const AvailabilityModal = ({ open, onOpenChange, lang }: AvailabilityModalProps)
     ],
     send: "Invia Richiesta su WhatsApp",
     selectDate: "Seleziona una data",
+  } : lang === "fr" ? {
+    title: "Vérifier la disponibilité",
+    checkIn: "Date d'arrivée",
+    checkOut: "Date de départ",
+    guests: "Nombre d'hôtes",
+    info: [
+      "Arrivée : à partir de 15h00",
+      "Départ : avant 10h00",
+      "Séjour minimum : 2 nuits",
+      "Max 4 hôtes",
+      "Self check-in disponible",
+    ],
+    send: "Envoyer la demande sur WhatsApp",
+    selectDate: "Sélectionnez une date",
   } : {
     title: "Check Availability",
     checkIn: "Check-in Date",
