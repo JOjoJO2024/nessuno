@@ -3,7 +3,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { MessageCircle, Users, CalendarDays, Info } from "lucide-react";
 import { format } from "date-fns";
-import { it, enUS } from "date-fns/locale";
+import { it, enUS, fr } from "date-fns/locale";
 
 interface AvailabilityModalProps {
   open: boolean;
@@ -16,7 +16,7 @@ const AvailabilityModal = ({ open, onOpenChange, lang }: AvailabilityModalProps)
   const [checkOut, setCheckOut] = useState<Date | undefined>();
   const [guests, setGuests] = useState(2);
 
-  const locale = lang === "it" ? it : enUS;
+  const locale = lang === "it" ? it : lang === "fr" ? fr : enUS;
 
   const buildWhatsAppMessage = () => {
     let msg = lang === "it"
