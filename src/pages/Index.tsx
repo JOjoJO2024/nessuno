@@ -15,7 +15,7 @@ import AvailabilityModal from "@/components/AvailabilityModal";
 
 const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
 
-type Lang = "it" | "en" | "ru" | "es" | "de";
+type Lang = "it" | "en" | "ru" | "es" | "de" | "ar" | "zh";
 
 const LANG_OPTIONS: { code: Lang; flag: string; label: string }[] = [
   { code: "it", flag: "🇮🇹", label: "Italiano" },
@@ -23,6 +23,8 @@ const LANG_OPTIONS: { code: Lang; flag: string; label: string }[] = [
   { code: "ru", flag: "🇷🇺", label: "Русский" },
   { code: "es", flag: "🇪🇸", label: "Español" },
   { code: "de", flag: "🇩🇪", label: "Deutsch" },
+  { code: "ar", flag: "🇸🇦", label: "العربية" },
+  { code: "zh", flag: "🇨🇳", label: "中文" },
 ];
 
 const translations: Record<Lang, {
@@ -251,18 +253,100 @@ const translations: Record<Lang, {
     contactEmail: "info@bellinisuitegarden.com",
     footer: "© 2026 Bellini Suite Garden. Alle Rechte vorbehalten.",
   },
+  ar: {
+    nav: ["الجناح", "المميزات", "المعرض", "الموقع", "اتصل بنا"],
+    heroTitle: "Bellini Suite Garden",
+    heroSubtitle: "ملاذ حصري في قلب فيرونا",
+    heroCta: "احجز عبر واتساب",
+    heroCtaSecondary: "تحقق من التوفر",
+    valueTitle: "لماذا Bellini Suite Garden",
+    values: [
+      { title: "حديقة خاصة", desc: "واحة نادرة في قلب فيرونا التاريخي — ملاذك الشخصي على بعد خطوات من مسرح رومانو." },
+      { title: "مركزي وهادئ", desc: "التوازن المثالي: كل شيء في متناول يدك، مع هدوء تام." },
+      { title: "تصميم راقٍ", desc: "80 متر مربع من الأناقة الاستعمارية بلمسات طبيعية — كل تفصيل مصمم للراحة." },
+      { title: "حتى 4 ضيوف", desc: "مثالي للأزواج أو العائلات مع سرير مزدوج وأريكة سرير في مساحة مفتوحة واسعة." },
+    ],
+    propertyTitle: "الجناح",
+    propertyDesc: "Bellini Suite Garden شقة مفتوحة بمساحة 80 متر مربع تقع في قلب فيرونا التاريخي، على بعد خطوات من مسرح رومانو. التصميم الطبيعي الراقي يمزج بين التفاصيل الاستعمارية والراحة العصرية.",
+    propertyDesc2: "يضم الجناح صالة واسعة ومطبخ مجهز بالكامل ومنطقة نوم مريحة بسرير مزدوج وأريكة سرير وحمام منفصل وحديقة خاصة جميلة — نادرة حقيقية في وسط فيرونا.",
+    highlightsTitle: "إقامتك تشمل",
+    highlights: [
+      "حديقة خاصة في المركز التاريخي",
+      "80 متر مربع مساحة مفتوحة",
+      "سرير مزدوج + أريكة سرير (حتى 4 ضيوف)",
+      "مطبخ عصري مجهز بالكامل",
+      "حمام منفصل بتشطيبات فاخرة",
+      "على بعد خطوات من مسرح رومانو",
+      "تكييف هواء وواي فاي سريع",
+      "تسجيل وصول ذاتي متاح",
+    ],
+    galleryTitle: "نظرة من الداخل",
+    locationTitle: "موقع متميز",
+    locationDesc: "Via Redentore 4، فيرونا — في قلب المركز التاريخي، على بعد خطوات من مسرح رومانو الشهير. بونتي بييترا وبياتسا ديلي إربي وضفاف نهر أديجي على بعد دقائق سيراً.",
+    ctaTitle: "هل أنتم مستعدون لتجربة فيرونا؟",
+    ctaDesc: "احجزوا مباشرة معنا للحصول على أفضل الأسعار ولمسة شخصية. بدون وسطاء، بدون رسوم خفية.",
+    ctaButton: "احجز عبر واتساب",
+    ctaButton2: "تحقق من التوفر",
+    contactTitle: "تواصل معنا",
+    contactAddress: "Via Redentore 4، فيرونا، إيطاليا",
+    contactPhone: "+39 331 806 6110",
+    contactEmail: "info@bellinisuitegarden.com",
+    footer: "© 2026 Bellini Suite Garden. جميع الحقوق محفوظة.",
+  },
+  zh: {
+    nav: ["套房", "特色", "画廊", "位置", "联系我们"],
+    heroTitle: "Bellini Suite Garden",
+    heroSubtitle: "维罗纳心脏地带的专属度假胜地",
+    heroCta: "通过WhatsApp预订",
+    heroCtaSecondary: "查看可用性",
+    valueTitle: "为什么选择 Bellini Suite Garden",
+    values: [
+      { title: "私人花园", desc: "维罗纳历史中心的稀有绿洲——距罗马剧院仅几步之遥的私人庇护所。" },
+      { title: "中心且安静", desc: "完美的平衡：步行即可到达一切，却享有绝对的宁静。" },
+      { title: "精致设计", desc: "80平方米殖民风格的优雅，融合自然主义元素——每个细节都为舒适而设计。" },
+      { title: "最多4位客人", desc: "非常适合情侣或家庭，配有双人床和沙发床，宽敞的开放空间。" },
+    ],
+    propertyTitle: "套房",
+    propertyDesc: "Bellini Suite Garden是一间80平方米的开放式公寓，位于维罗纳历史中心，距罗马剧院仅几步之遥。精致的自然主义设计将殖民风格的细节与现代舒适完美融合。",
+    propertyDesc2: "套房设有宽敞的客厅、设备齐全的厨房、舒适的睡眠区（配有双人床和沙发床）、独立浴室以及精心维护的私人花园——在维罗纳市中心实属罕见。",
+    highlightsTitle: "您的住宿包括",
+    highlights: [
+      "历史中心的私人花园",
+      "80平方米开放空间",
+      "双人床 + 沙发床（最多4位客人）",
+      "设备齐全的现代厨房",
+      "独立浴室，高端装修",
+      "距罗马剧院仅几步",
+      "空调和高速WiFi",
+      "自助入住可用",
+    ],
+    galleryTitle: "内部一瞥",
+    locationTitle: "黄金地段",
+    locationDesc: "Via Redentore 4，维罗纳——位于历史中心的核心，距标志性的罗马剧院仅几步之遥。石桥、百草广场和阿迪杰河畔步行即可到达。",
+    ctaTitle: "准备好体验维罗纳了吗？",
+    ctaDesc: "直接与我们预订，享受最优惠的价格和个性化服务。没有中间商，没有隐藏费用。",
+    ctaButton: "通过WhatsApp预订",
+    ctaButton2: "查看可用性",
+    contactTitle: "联系我们",
+    contactAddress: "Via Redentore 4，维罗纳，意大利",
+    contactPhone: "+39 331 806 6110",
+    contactEmail: "info@bellinisuitegarden.com",
+    footer: "© 2026 Bellini Suite Garden. 保留所有权利。",
+  },
 };
 
 const Index = () => {
   const [lang, setLang] = useState<Lang>(() => {
     if (typeof window === "undefined") return "it";
     const saved = window.localStorage.getItem("bellini-lang");
-    if (saved && ["it", "en", "ru", "es", "de"].includes(saved)) return saved as Lang;
+    if (saved && ["it", "en", "ru", "es", "de", "ar", "zh"].includes(saved)) return saved as Lang;
     const browserLang = window.navigator.language.toLowerCase();
     if (browserLang.startsWith("it")) return "it";
     if (browserLang.startsWith("ru")) return "ru";
     if (browserLang.startsWith("es")) return "es";
     if (browserLang.startsWith("de")) return "de";
+    if (browserLang.startsWith("ar")) return "ar";
+    if (browserLang.startsWith("zh")) return "zh";
     return "en";
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
