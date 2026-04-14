@@ -581,13 +581,13 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed mb-8">{t.propertyDesc2}</p>
               <div className="flex flex-wrap gap-4">
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Maximize size={16} /> {{ it: "80 mq", en: "80 sqm", ru: "80 кв.м", es: "80 m²", de: "80 m²", ar: "80 م²", zh: "80平方米" }[lang]}
+                  <Maximize size={16} /> {{ it: "80 mq", en: "80 sqm", ru: "80 кв.м", es: "80 m²", de: "80 m²", ar: "80 م²", zh: "80平方米", fr: "80 m²" }[lang]}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Users size={16} /> {{ it: "Max 4", en: "Max 4", ru: "До 4", es: "Máx 4", de: "Max 4", ar: "حتى 4", zh: "最多4位" }[lang]}
+                  <Users size={16} /> {{ it: "Max 4", en: "Max 4", ru: "До 4", es: "Máx 4", de: "Max 4", ar: "حتى 4", zh: "最多4位", fr: "Max 4" }[lang]}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Leaf size={16} /> {{ it: "Giardino Privato", en: "Private Garden", ru: "Частный сад", es: "Jardín Privado", de: "Privater Garten", ar: "حديقة خاصة", zh: "私人花园" }[lang]}
+                  <Leaf size={16} /> {{ it: "Giardino Privato", en: "Private Garden", ru: "Частный сад", es: "Jardín Privado", de: "Privater Garten", ar: "حديقة خاصة", zh: "私人花园", fr: "Jardin Privé" }[lang]}
                 </span>
               </div>
             </div>
@@ -708,12 +708,12 @@ const Index = () => {
             <a href="tel:+393318066110" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <Phone className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">{t.contactPhone}</p>
-              <p className="text-xs text-muted-foreground mt-1">{{ it: "Tocca per chiamare", en: "Tap to call", ru: "Нажмите для звонка", es: "Toca para llamar", de: "Zum Anrufen tippen", ar: "اضغط للاتصال", zh: "点击拨打" }[lang]}</p>
+              <p className="text-xs text-muted-foreground mt-1">{{ it: "Tocca per chiamare", en: "Tap to call", ru: "Нажмите для звонка", es: "Toca para llamar", de: "Zum Anrufen tippen", ar: "اضغط للاتصال", zh: "点击拨打", fr: "Appuyez pour appeler" }[lang]}</p>
             </a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <MessageCircle className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">WhatsApp</p>
-              <p className="text-xs text-muted-foreground mt-1">{{ it: "Scrivici su WhatsApp", en: "Message us on WhatsApp", ru: "Напишите нам в WhatsApp", es: "Escríbenos en WhatsApp", de: "Schreiben Sie uns auf WhatsApp", ar: "راسلنا على واتساب", zh: "通过WhatsApp联系我们" }[lang]}</p>
+              <p className="text-xs text-muted-foreground mt-1">{{ it: "Scrivici su WhatsApp", en: "Message us on WhatsApp", ru: "Напишите нам в WhatsApp", es: "Escríbenos en WhatsApp", de: "Schreiben Sie uns auf WhatsApp", ar: "راسلنا على واتساب", zh: "通过WhatsApp联系我们", fr: "Écrivez-nous sur WhatsApp" }[lang]}</p>
             </a>
           </div>
         </div>
