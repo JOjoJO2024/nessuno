@@ -15,7 +15,7 @@ import AvailabilityModal from "@/components/AvailabilityModal";
 
 const WHATSAPP_LINK = "https://wa.me/393318066110?text=Hi%2C%20I%27d%20like%20to%20book%20Bellini%20Suite%20Garden";
 
-type Lang = "it" | "en" | "ru" | "es" | "de" | "ar" | "zh";
+type Lang = "it" | "en" | "ru" | "es" | "de" | "ar" | "zh" | "fr";
 
 const LANG_OPTIONS: { code: Lang; flag: string; label: string }[] = [
   { code: "it", flag: "🇮🇹", label: "Italiano" },
@@ -25,6 +25,7 @@ const LANG_OPTIONS: { code: Lang; flag: string; label: string }[] = [
   { code: "de", flag: "🇩🇪", label: "Deutsch" },
   { code: "ar", flag: "🇸🇦", label: "العربية" },
   { code: "zh", flag: "🇨🇳", label: "中文" },
+  { code: "fr", flag: "🇫🇷", label: "Français" },
 ];
 
 const translations: Record<Lang, {
@@ -333,13 +334,53 @@ const translations: Record<Lang, {
     contactEmail: "info@bellinisuitegarden.com",
     footer: "© 2026 Bellini Suite Garden. 保留所有权利。",
   },
+  fr: {
+    nav: ["La Suite", "Caractéristiques", "Galerie", "Emplacement", "Contact"],
+    heroTitle: "Bellini Suite Garden",
+    heroSubtitle: "Un refuge exclusif au cœur de Vérone",
+    heroCta: "Réserver sur WhatsApp",
+    heroCtaSecondary: "Vérifier la disponibilité",
+    valueTitle: "Pourquoi Bellini Suite Garden",
+    values: [
+      { title: "Jardin privé", desc: "Une oasis rare dans le centre historique de Vérone — votre refuge personnel à quelques pas du Teatro Romano." },
+      { title: "Central et calme", desc: "L'équilibre parfait : tout à pied, mais dans une tranquillité absolue." },
+      { title: "Design raffiné", desc: "80 m² d'élégance coloniale aux touches naturalistes — chaque détail pensé pour le confort." },
+      { title: "Jusqu'à 4 hôtes", desc: "Idéal pour les couples ou les familles avec un lit double et un canapé-lit dans un vaste espace ouvert." },
+    ],
+    propertyTitle: "La Suite",
+    propertyDesc: "Bellini Suite Garden est un appartement open space de 80 m² situé au cœur historique de Vérone, à quelques pas du Teatro Romano. Le design naturaliste raffiné associe des détails coloniaux au confort moderne, créant une atmosphère à la fois élégante et profondément relaxante.",
+    propertyDesc2: "La suite comprend un vaste séjour, une cuisine entièrement équipée, un espace nuit confortable avec un lit double et un canapé-lit, une salle de bain séparée et un magnifique jardin privé soigneusement entretenu — une véritable rareté dans le centre de Vérone.",
+    highlightsTitle: "Votre séjour comprend",
+    highlights: [
+      "Jardin privé dans le centre historique",
+      "80 m² en open space",
+      "Lit double + canapé-lit (jusqu'à 4 hôtes)",
+      "Cuisine moderne entièrement équipée",
+      "Salle de bain séparée avec finitions haut de gamme",
+      "À quelques pas du Teatro Romano",
+      "Climatisation et Wi-Fi rapide",
+      "Self check-in disponible",
+    ],
+    galleryTitle: "Un aperçu de l'intérieur",
+    locationTitle: "Emplacement privilégié",
+    locationDesc: "Via Redentore 4, Vérone — au cœur du centre historique, à quelques pas de l'emblématique Teatro Romano. Ponte Pietra, Piazza delle Erbe et les rives de l'Adige sont accessibles en quelques minutes à pied.",
+    ctaTitle: "Prêts pour votre expérience à Vérone ?",
+    ctaDesc: "Réservez directement chez nous pour les meilleurs tarifs et un service personnalisé. Sans intermédiaire, sans frais cachés.",
+    ctaButton: "Réserver sur WhatsApp",
+    ctaButton2: "Vérifier la disponibilité",
+    contactTitle: "Nous contacter",
+    contactAddress: "Via Redentore 4, Vérone, Italie",
+    contactPhone: "+39 331 806 6110",
+    contactEmail: "info@bellinisuitegarden.com",
+    footer: "© 2026 Bellini Suite Garden. Tous droits réservés.",
+  },
 };
 
 const Index = () => {
   const [lang, setLang] = useState<Lang>(() => {
     if (typeof window === "undefined") return "it";
     const saved = window.localStorage.getItem("bellini-lang");
-    if (saved && ["it", "en", "ru", "es", "de", "ar", "zh"].includes(saved)) return saved as Lang;
+    if (saved && ["it", "en", "ru", "es", "de", "ar", "zh", "fr"].includes(saved)) return saved as Lang;
     const browserLang = window.navigator.language.toLowerCase();
     if (browserLang.startsWith("it")) return "it";
     if (browserLang.startsWith("ru")) return "ru";
@@ -347,6 +388,7 @@ const Index = () => {
     if (browserLang.startsWith("de")) return "de";
     if (browserLang.startsWith("ar")) return "ar";
     if (browserLang.startsWith("zh")) return "zh";
+    if (browserLang.startsWith("fr")) return "fr";
     return "en";
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -539,13 +581,13 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed mb-8">{t.propertyDesc2}</p>
               <div className="flex flex-wrap gap-4">
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Maximize size={16} /> {{ it: "80 mq", en: "80 sqm", ru: "80 кв.м", es: "80 m²", de: "80 m²", ar: "80 م²", zh: "80平方米" }[lang]}
+                  <Maximize size={16} /> {{ it: "80 mq", en: "80 sqm", ru: "80 кв.м", es: "80 m²", de: "80 m²", ar: "80 م²", zh: "80平方米", fr: "80 m²" }[lang]}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Users size={16} /> {{ it: "Max 4", en: "Max 4", ru: "До 4", es: "Máx 4", de: "Max 4", ar: "حتى 4", zh: "最多4位" }[lang]}
+                  <Users size={16} /> {{ it: "Max 4", en: "Max 4", ru: "До 4", es: "Máx 4", de: "Max 4", ar: "حتى 4", zh: "最多4位", fr: "Max 4" }[lang]}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-foreground bg-background px-4 py-2 rounded-full">
-                  <Leaf size={16} /> {{ it: "Giardino Privato", en: "Private Garden", ru: "Частный сад", es: "Jardín Privado", de: "Privater Garten", ar: "حديقة خاصة", zh: "私人花园" }[lang]}
+                  <Leaf size={16} /> {{ it: "Giardino Privato", en: "Private Garden", ru: "Частный сад", es: "Jardín Privado", de: "Privater Garten", ar: "حديقة خاصة", zh: "私人花园", fr: "Jardin Privé" }[lang]}
                 </span>
               </div>
             </div>
@@ -666,12 +708,12 @@ const Index = () => {
             <a href="tel:+393318066110" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <Phone className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">{t.contactPhone}</p>
-              <p className="text-xs text-muted-foreground mt-1">{{ it: "Tocca per chiamare", en: "Tap to call", ru: "Нажмите для звонка", es: "Toca para llamar", de: "Zum Anrufen tippen", ar: "اضغط للاتصال", zh: "点击拨打" }[lang]}</p>
+              <p className="text-xs text-muted-foreground mt-1">{{ it: "Tocca per chiamare", en: "Tap to call", ru: "Нажмите для звонка", es: "Toca para llamar", de: "Zum Anrufen tippen", ar: "اضغط للاتصال", zh: "点击拨打", fr: "Appuyez pour appeler" }[lang]}</p>
             </a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="p-6 group rounded-xl hover:bg-secondary/60 transition-colors">
               <MessageCircle className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={24} />
               <p className="text-sm text-primary font-medium">WhatsApp</p>
-              <p className="text-xs text-muted-foreground mt-1">{{ it: "Scrivici su WhatsApp", en: "Message us on WhatsApp", ru: "Напишите нам в WhatsApp", es: "Escríbenos en WhatsApp", de: "Schreiben Sie uns auf WhatsApp", ar: "راسلنا على واتساب", zh: "通过WhatsApp联系我们" }[lang]}</p>
+              <p className="text-xs text-muted-foreground mt-1">{{ it: "Scrivici su WhatsApp", en: "Message us on WhatsApp", ru: "Напишите нам в WhatsApp", es: "Escríbenos en WhatsApp", de: "Schreiben Sie uns auf WhatsApp", ar: "راسلنا على واتساب", zh: "通过WhatsApp联系我们", fr: "Écrivez-nous sur WhatsApp" }[lang]}</p>
             </a>
           </div>
         </div>

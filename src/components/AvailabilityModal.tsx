@@ -3,7 +3,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { MessageCircle, Users, CalendarDays, Info } from "lucide-react";
 import { format } from "date-fns";
-import { it, enUS } from "date-fns/locale";
+import { it, enUS, fr } from "date-fns/locale";
 
 interface AvailabilityModalProps {
   open: boolean;
@@ -16,7 +16,7 @@ const AvailabilityModal = ({ open, onOpenChange, lang }: AvailabilityModalProps)
   const [checkOut, setCheckOut] = useState<Date | undefined>();
   const [guests, setGuests] = useState(2);
 
-  const locale = lang === "it" ? it : enUS;
+  const locale = lang === "it" ? it : lang === "fr" ? fr : enUS;
 
   const buildWhatsAppMessage = () => {
     let msg = lang === "it"
@@ -44,6 +44,20 @@ const AvailabilityModal = ({ open, onOpenChange, lang }: AvailabilityModalProps)
     ],
     send: "Invia Richiesta su WhatsApp",
     selectDate: "Seleziona una data",
+  } : lang === "fr" ? {
+    title: "Vérifier la disponibilité",
+    checkIn: "Date d'arrivée",
+    checkOut: "Date de départ",
+    guests: "Nombre d'hôtes",
+    info: [
+      "Arrivée : à partir de 15h00",
+      "Départ : avant 10h00",
+      "Séjour minimum : 2 nuits",
+      "Max 4 hôtes",
+      "Self check-in disponible",
+    ],
+    send: "Envoyer la demande sur WhatsApp",
+    selectDate: "Sélectionnez une date",
   } : {
     title: "Check Availability",
     checkIn: "Check-in Date",
