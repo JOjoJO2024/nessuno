@@ -321,7 +321,7 @@ const translations: Record<Lang, {
       "空调和高速WiFi",
       "自助入住可用",
     ],
-    galleryTitle: "内部一瞥",
+    galleryTitle: "室内一览",
     locationTitle: "黄金地段",
     locationDesc: "Via Redentore 4，维罗纳——位于历史中心的核心，距标志性的罗马剧院仅几步之遥。石桥、百草广场和阿迪杰河畔步行即可到达。",
     ctaTitle: "准备好体验维罗纳了吗？",
